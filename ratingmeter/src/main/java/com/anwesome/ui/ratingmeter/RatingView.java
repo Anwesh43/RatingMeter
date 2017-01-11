@@ -16,6 +16,12 @@ public class RatingView extends View {
     private int w,h;
     int time = 0;
     private int rating = 0;
+    private RatingListener ratingListener;
+
+    public void setRatingListener(RatingListener ratingListener) {
+        this.ratingListener = ratingListener;
+    }
+
     private List<Star> stars = new ArrayList<>();
     public RatingView(Context context) {
         super(context);
@@ -43,7 +49,28 @@ public class RatingView extends View {
                 Star star = stars.get(i);
                 star.setFill(false);
             }
-            rating = fillIndex;
+            rating = fillIndex+1;
+            if(ratingListener!=null) {
+                switch(rating) {
+                    case 1:
+                        ratingListener.on1Star(rating);
+                        break;
+                    case 2:
+                        ratingListener.on2Star(rating);
+                        break;
+                    case 3:
+                        ratingListener.on3Star(rating);
+                        break;
+                    case 4:
+                        ratingListener.on4Star(rating);
+                        break;
+                    case 5:
+                        ratingListener.on5Star(rating);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
     public int getRating() {
