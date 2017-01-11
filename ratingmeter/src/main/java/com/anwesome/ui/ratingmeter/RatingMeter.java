@@ -27,7 +27,7 @@ public class RatingMeter {
             h = size.y;
         }
     }
-    public void addRatings(float x,float y) {
+    public RatingView addRatings(float x,float y) {
         RatingView ratingView = new RatingView(activity.getApplicationContext());
         ratingView.setX(x);
         ratingView.setY(y);
@@ -36,5 +36,6 @@ public class RatingMeter {
             r = h/2;
         }
         activity.addContentView(ratingView, new ViewGroup.LayoutParams(r,r/7));
+        return ratingView;
     }
 }

@@ -15,6 +15,7 @@ public class RatingView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int w,h;
     int time = 0;
+    private int rating = 0;
     private List<Star> stars = new ArrayList<>();
     public RatingView(Context context) {
         super(context);
@@ -42,7 +43,11 @@ public class RatingView extends View {
                 Star star = stars.get(i);
                 star.setFill(false);
             }
+            rating = fillIndex;
         }
+    }
+    public int getRating() {
+        return rating;
     }
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX(),y = event.getY();
